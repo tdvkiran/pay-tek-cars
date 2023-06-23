@@ -55,7 +55,7 @@ function PaymentIframe(props) {
         (response) => {
           const token = _.get(response, "data.data.transactionToken");
           setTransactionToken(token);
-          console.log("tokesn ", token);
+
         },
         (error) => {
           console.log(error);
