@@ -1,0 +1,40 @@
+.emptyCartContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* background-color: red; */
+   
+}
+.emptyCartImage{
+height: 20%;
+width: 20%;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+ margin-top: 100px;
+ padding-top: 30px;
+ gap: 30px;
+
+}
+
+.emptyCartImage>img{
+    width: 90%;
+    height: 90%;
+}
+.goToCarsPage{
+    padding: 10px 70px;
+    font-size: 20px;
+    /* font-weight: bold; */
+    background-color: #494DAC;
+    color: white;
+    border-radius: 2px;
+    margin-top: 15px;
+    cursor: pointer;
+    margin-left: 20px;
+}
+.emptyCartText{
+    font-size: 33px;
+    color:rgb(47, 36, 172)
+}

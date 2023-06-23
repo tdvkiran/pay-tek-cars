@@ -1,0 +1,60 @@
+.HomepageContainer{
+    margin-top: 100px;
+    position: relative;
+}
+.landingPageImageContainer {
+    width: 100%;
+    margin-top: 2%;
+  }
+  
+  .flexContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .textContainer {
+    width: 100%;
+    margin-top: 40px;
+  }
+  .landingText {
+    width: 30%;
+    text-align: center;
+    font-weight: bold;
+  }
+  .payTekLogo {
+    height: 4rem;
+  }
+  .imageContainer {
+    position: relative;
+    z-index: 10;
+  }
+  .buttonText {
+    position: absolute;
+    top: 40px;
+    background-color: #494dac;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    font-weight: bold;
+    transition: all ease-in 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 16px;
+  }
+  
+  .buttonText:hover {
+    filter: brightness(1.2);
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    cursor: pointer;
+  }
+  
+  .cityBg{
+    width: 100%;
+    position: absolute;
+    top: -20%;
+    opacity: 0.3;
+  }
+  

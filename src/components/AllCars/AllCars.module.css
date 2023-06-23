@@ -1,0 +1,117 @@
+.all_cars{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 90px;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 60px;
+
+}
+.car_container{
+    width: 400px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    min-height: 437px;
+}
+.car_image>img{
+    width: 100%;
+    height: 100%;
+
+}
+.car_description{
+     text-align: center;
+     font-weight: 500;
+}
+.add_to_cart{
+    text-align: center;
+}
+.add_to_cart>button{
+    outline: none;
+    border: none;
+    padding: 15px 63px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    background-color: #494DAC;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-bottom: 25px;
+    border-radius: 2px;
+}
+.addAndRemoveButton{
+    padding: 12px 60px;
+    color: white;
+    background-color: #494DAC;
+    margin-bottom: 25px;
+    border-radius: 2px;
+    display: flex;
+    gap: 20px;
+   align-items: center;
+   justify-content: space-around;
+   font-weight: 500;
+
+}
+.addToCart{
+    cursor: pointer;
+
+}
+.removeFromCart{
+    cursor: pointer;
+
+}
+
+/* cart popup css */
+.cartPopup {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #374DB3;
+    min-width: 700px;
+    padding: 22px 25px;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    position: fixed;
+    bottom: 0px;
+    transition: all 0.5s ease-in-out;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    border-radius: 2px;
+    margin-bottom: 1px;
+    font-weight: 500;
+}
+
+.totalCartItemsAndTotalCartPrice {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.totalCartItemsAndTotalCartPrice>div {
+    margin-right: 7px;
+}
+
+.viewCart {
+    display: flex;
+    gap: 7px;
+}
+
+.viewCart>div:nth-child(2) {
+    width: 14px;
+    height: 14px;
+    
+}
+
+.viewCart>div:nth-child(2)>img {
+    width: 100%;
+    height: 100%;
+}
+
+.viewCart>div:nth-child(1) {
+    text-transform: uppercase;
+    font-size: 15px;
+    font-weight: 500;
+}
