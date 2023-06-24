@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react';
+import React from 'react';
 import styles from './PaymentSuccess.module.css';
 import PaymentSuccessImage from '../../assets/PaymentSuccessful21.png';
 function PaymentSuccess(props) {

@@ -5,7 +5,7 @@
     gap: 15px;
     align-items: center;
     justify-content: center;
-    padding-bottom: 60px;
+    padding-bottom: 80px;
 
 }
 .car_container{
@@ -61,6 +61,9 @@
 .removeFromCart{
     cursor: pointer;
 
+}
+.all_cars:nth-last-child(2){
+    background-color: red;
 }
 
 /* cart popup css */

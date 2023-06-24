@@ -15,7 +15,7 @@
   }
   .textContainer {
     width: 100%;
-    margin-top: 40px;
+    margin-top: 20px;
   }
   .landingText {
     width: 30%;
@@ -34,7 +34,7 @@
     top: 40px;
     background-color: #494dac;
     padding: 10px 20px;
-    border-radius: 5px;
+    border-radius: 4px;
     border: none;
     color: white;
     font-weight: bold;
@@ -59,10 +59,22 @@
   }
   @media (max-width: 768px) {
     .buttonText {
-      top:15rem ;
+      top:9rem ;
     }
     .payTekLogo {
       height: 2.5rem;
+    }
+    .HomepageContainer{
+     margin-top: 120px;
+     height: calc(100vh - 120px);
+    }
+    .cityBg{
+      top: -15%;
+    }
+    .landingText{
+      font-weight: 500;
+      font-size: 27px;
+     
     }
   }
   
