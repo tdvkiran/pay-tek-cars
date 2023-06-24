@@ -17,12 +17,13 @@ import _ from "lodash";
 
 function Cart(props) {
   const { history } = props;
-  // const cartItems = JSON.parse(localStorage.getItem('cartItems'));
-  const { cartItems, setCartItems } = useContext(CartContext);
+  const cartItems = JSON.parse(localStorage.getItem('cartItems'));
+  const {  setCartItems ,setTotalCartQuantity} = useContext(CartContext);
   const [isPaymetSuccess, setIsPaymetSuccess] = useState(false);
   const [isPaymentFailed, setIsPaymetFailed] = useState(false);
   const [isSDKLoading, setIsSDKLoading] = useState(true);
   const [isOrderPlaced, setIsOrderPlaced] = useState(false);
+  const [isTransactionInProgress , setTransactionInProgress]=useState(false);
 
   function calculateTotalPrice(price, quantity) {
     const numericPrice = parseFloat(price.replace(/[^0-9.-]+/g, ""));
@@ -59,10 +60,13 @@ function Cart(props) {
     ) {
       return;
     }
+   
     if (open === false && isPaymetSuccess) {
       setIsPaymetSuccess(false);
       setIsOrderPlaced(true);
       setCartItems([]);
+      setTotalCartQuantity(0);
+      history.push('/success');
     }
     if (open === false) {
       setIsSDKLoading(true);
@@ -74,30 +78,6 @@ function Cart(props) {
     }
     setDrawerPositio({ ...drawerPosition, [anchor]: open });
   };
-
-  // SDK Call backs
-
-  // const successCallBack = useCallback(response => {
-  //   setIsPaymetSuccess(true);
-  //   setIsPaymetFailed(false);
-  // }, []);
-
-  // const failureCallBack = useCallback(error => {
-  //   setIsPaymetFailed(true);
-  //   setIsPaymetSuccess(false);
-  // }, []);
-
-  // const onSdkLoadCallBack = useCallback(value => {
-  //   setIsSDKLoading(false);
-  // }, []);
-
-  // const onProgressCallBack = useCallback(value => {
-  //   console.log('progress');
-  // }, []);
-  // const onTransactionLockCallBack = useCallback(value => {}, []);
-
-  // Iframe handlers
-
   const handleSDKLoad = () => {
     setIsSDKLoading(false);
   };
@@ -114,6 +94,9 @@ function Cart(props) {
     setIsPaymetSuccess(false);
   };
 
+  const  handleTransactionInProgress = ()=>{
+    setTransactionInProgress(true);
+  }
   return cartItems.length > 0 ? (
     <div className={styles.cartContainer}>
       {cartItems.map((car, index) => (
@@ -154,7 +137,7 @@ function Cart(props) {
         anchor="right"
         open={drawerPosition.right}
         onClose={toggleDrawer("right", false)}
-        PaperProps={{ style: { width: "43%" } }}
+        PaperProps={{ className: styles.drawer } }
       >
         <DialogTitle disableTypography className={styles.drawerTitle}>
           <Typography variant="h6"> Payment </Typography>
@@ -170,6 +153,9 @@ function Cart(props) {
             <CircularProgress />
           </div>
         )}
+        {
+          isTransactionInProgress&&<div className={styles.redirecting}>Redirecting....</div>
+        }
         {!isPaymetSuccess && !isPaymentFailed && (
           <PaymentIframe
             totalCartPrice={totalCartPrice}
@@ -178,19 +164,16 @@ function Cart(props) {
             handleSDKLoad={handleSDKLoad}
             handleTransactionSuccess={handleTransactionSuccess}
             totalAmount={totalCartPrice}
+            handleTransactionInProgress={ handleTransactionInProgress}
           />
         )}
-        {isPaymetSuccess && <PaymentSuccess />}
+        {isPaymetSuccess && <PaymentSuccess  toggleDrawerHelper={toggleDrawer}/>}
         {isPaymentFailed && (
           <PaymentFailed handleRetryPayment={handleRetryPayment} />
         )}
       </Drawer>
     </div>
-  ) : isOrderPlaced ? (
-    <OrderPlaced history={history} />
-  ) : (
-    <Emptycart history={history} />
-  );
+  ) :  <Emptycart history={history} />
 }
 
 export default Cart;

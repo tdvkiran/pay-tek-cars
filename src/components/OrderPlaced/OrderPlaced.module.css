@@ -23,3 +23,8 @@ margin-top: 50px;
     font-weight: bold;
     border-radius: 2px;
 }
+.goToHomepage:hover {
+    filter: brightness(1.15);
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    cursor: pointer;
+  }

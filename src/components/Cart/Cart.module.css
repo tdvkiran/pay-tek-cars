@@ -11,11 +11,21 @@
     display: flex;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     gap: 60px;
-    min-width: 800px
+    width: 57%;
+    gap: 5%;
+
+}
+.cartContainer>div:nth-last-child(2){
+margin-bottom: 5%;
 }
 .carImage{
-    width: 300px;
-    height: 200px;
+    /* width: 300px;
+    height: 200px; */
+    /* height: 100%; */
+    height: auto;
+    width: auto;
+    max-height: 250px;
+    max-width: 350px;
     
 }
 .carImage>img{
@@ -24,8 +34,8 @@
 }
 .carInfo{
     flex-grow: 1;
-    padding: 0 35px;
-    font-weight: bold;
+    padding: 0 3%;
+    font-weight: 500;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -49,7 +59,7 @@
 }
 .totalAmountAndPay{
     display: flex;
-    min-width: 700px;
+    width: 50%;
     padding: 17px 25px;
     position: fixed;
     bottom: 3px;
@@ -63,7 +73,7 @@
     
 }
 .totalAmount{
-    font-size: 18px;
+    font-size: 1rem;
 }
 .proceedToPay{
     background-color: white;
@@ -73,15 +83,10 @@
     border-radius: 2px;
     cursor: pointer;
     box-shadow: #374eb384 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-    font-size: 16px;
+    font-size: 1rem;
 
 }
 .Loader{
-    /* height: 100%;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center; */
     position: absolute;
     top: 50%;
     left: 50%;
@@ -97,6 +102,42 @@
     align-items: center;
     justify-content: space-between;
 }
-.closeIcon{
-    /* margin-right: 30px; */
+.drawer{
+    width: 43%;;
 }
+.redirecting{
+    position: absolute;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@media (max-width: 768px) {
+    .cartCard {
+      flex-direction: column;
+      gap: 25px;
+      /* min-width: auto; */
+      width: auto;
+      font-size: 0.8rem;
+    }
+    
+    .carImage {
+      width: 100%;
+      height: auto;
+    }
+    .cartContainer>div:nth-last-child(2){
+        margin-bottom: 20%;
+    }
+    
+    
+    .totalAmountAndPay {
+      width: 100%;
+      border-radius: 2px;
+      bottom: 0;
+      justify-content: space-around;
+    }
+    .drawer{
+        width: 95%;
+    }
+  }

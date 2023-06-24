@@ -14,7 +14,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    min-height: 437px;
+    min-height: 475px;
 }
 .car_image>img{
     width: 100%;
@@ -70,7 +70,7 @@
     justify-content: space-between;
     align-items: center;
     background-color: #374DB3;
-    min-width: 700px;
+    width: 50%;
     padding: 22px 25px;
     color: white;
     font-size: 15px;
@@ -114,4 +114,16 @@
     text-transform: uppercase;
     font-size: 15px;
     font-weight: 500;
+}
+@media (max-width: 768px) {
+    .car_container{
+        width: auto;
+    }
+    .cartPopup {
+        width: 100%;
+        border-radius: 2px;
+        bottom: 0;
+        justify-content: space-around;
+        margin-bottom: 0;
+    }
 }

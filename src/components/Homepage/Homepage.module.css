@@ -42,7 +42,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font-size: 16px;
+    font-size: 1rem;
   }
   
   .buttonText:hover {
@@ -56,5 +56,13 @@
     position: absolute;
     top: -20%;
     opacity: 0.3;
+  }
+  @media (max-width: 768px) {
+    .buttonText {
+      top:15rem ;
+    }
+    .payTekLogo {
+      height: 2.5rem;
+    }
   }
   

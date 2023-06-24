@@ -4,7 +4,7 @@ const viewCartImageLink =
 
 export function cartPopup(handleCartPopup, totalQuantity, getTotalAmount, styles) {
   return (
-    <div className={styles.cartPopup} onClick={handleCartPopup} style={{ bottom: totalQuantity ? '0' : '-57px' }}>
+    <div className={styles.cartPopup} onClick={handleCartPopup} style={{ bottom: totalQuantity ? '0' : '-63px' }}>
       <div className={styles.totalCartItemsAndTotalCartPrice}>
         <div>{totalQuantity} Item</div>
         <div>|</div>

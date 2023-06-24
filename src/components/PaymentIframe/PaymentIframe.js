@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 import _ from 'lodash';
 
 function PaymentIframe(props) {
-  const {totalAmount, handleFailedTransaction,handleTransactionSuccess,handleIFrameReady,handleSDKLoad}=props;
+  const {totalAmount, handleFailedTransaction,handleTransactionSuccess, handleTransactionInProgress,handleSDKLoad}=props;
   const [transactionToken, setTransactionToken] = useState('');
   const iFrameRef = useRef(null);
   const eventType = _.property("data.type");
@@ -77,11 +77,12 @@ function PaymentIframe(props) {
         case IFRAME_EVENT_TYPE.TRANSACTION_SUCCESSFUL:
             handleTransactionSuccess();
           break;
-        case IFRAME_EVENT_TYPE.IFRAME_READY:
-            handleIFrameReady();
+        case IFRAME_EVENT_TYPE.TRANSACTION_FAILURE:
+            handleFailedTransaction();
             break;  
         default:
-          handleFailedTransaction();
+            handleTransactionInProgress();
+            break;
       }
     }
   };
@@ -103,7 +104,9 @@ function PaymentIframe(props) {
     postMessageToIframe(IFRAME_EVENT_TYPE.IFRAME_PROPS, iFrameRef, {
       transactionToken,
       loader: false,
-      locale:'en_US'
+      locale:'en_US',
+      successUrl: 'http://localhost:3001/success',
+      cancelUrl:'http://localhost:3001/cart'
     });
   }
 

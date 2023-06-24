@@ -18,5 +18,19 @@
 .paymentSuccessfulText{
     padding-top: 30px;
     font-size: 30px;
-    font-weight: bold;
+    font-weight: 500;
+}
+.goBackHome{
+    padding: 9px 50px;
+    font-weight: 500;
+    color: white;
+    background-color: #494DAC;
+    margin-top: 30px;
+    border-radius: 2px;
+    cursor: pointer;
+}
+@media (max-width: 768px) {
+    .paymentSuccessfulText{
+        font-weight: 500;
+    }
 }
