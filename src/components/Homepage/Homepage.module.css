@@ -59,7 +59,7 @@
   }
   @media (max-width: 768px) {
     .buttonText {
-      top:9rem ;
+      top:120%
     }
     .payTekLogo {
       height: 2.5rem;
