@@ -125,6 +125,7 @@
     .car_container{
         width: auto;
         max-width: 370px;
+        margin: 0 12px;
     }
     
     .cartPopup {

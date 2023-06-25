@@ -9,7 +9,7 @@ function PaymentSuccess(props) {
         <img src={PaymentSuccessImage} alt="payment - success" />
       </div>
       <div className={styles.paymentSuccessfulText}>Payment Successful</div>
-      <div className={styles.goBackHome} onClick={toggleDrawerHelper("right", false)}>Go Home</div>
+      <div className={styles.goBackHome} onClick={toggleDrawerHelper("right", false)}>Close</div>
     </div>
   );
 }
