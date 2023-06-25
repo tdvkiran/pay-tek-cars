@@ -63,6 +63,7 @@
     }
     .payTekLogo {
       height: 2.5rem;
+      mix-blend-mode: multiply;
     }
     .HomepageContainer{
      margin-top: 120px;

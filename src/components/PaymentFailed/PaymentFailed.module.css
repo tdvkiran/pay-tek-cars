@@ -14,20 +14,22 @@
 .successImage>img{
     width: 100%;
     height: 100%;
+    mix-blend-mode: multiply;
 }
 .paymentSuccessfulText{
     padding-top: 30px;
     font-size: 25px;
-    font-weight: bold;
+    font-weight: 500;
 }
 .retryButton{
     padding: 7px 50px;
-    font-weight: bold;
+    font-weight: 500;
     color: white;
     background-color: #494DAC;
     margin-top: 30px;
     border-radius: 2px;
     cursor: pointer;
+    text-transform: uppercase;
 }
 @media (max-width: 768px) {
     .paymentSuccessfulText{

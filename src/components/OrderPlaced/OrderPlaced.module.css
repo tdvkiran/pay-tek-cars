@@ -8,7 +8,7 @@
 
 }
 .orderPlacedSuccessfullyText{
-font-weight: bold;
+font-weight: 500;
 font-size: 25px;
 color: rgb(29, 35, 214);
 margin-top: 50px;
@@ -20,7 +20,7 @@ margin-top: 50px;
     color: white;
     text-transform: uppercase;
     cursor: pointer;
-    font-weight: bold;
+    font-weight: 500;
     border-radius: 2px;
 }
 .goToHomepage:hover {

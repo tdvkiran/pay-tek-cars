@@ -15,6 +15,7 @@
     align-items: center;
     flex-direction: column;
     min-height: 475px;
+    background-color: #f0f3fc81;
 }
 .car_image{
     max-width: 370;
@@ -22,6 +23,7 @@
 .car_image>img{
     width: 100%;
     height: 100%;
+    mix-blend-mode: multiply;
 
 }
 .car_description{

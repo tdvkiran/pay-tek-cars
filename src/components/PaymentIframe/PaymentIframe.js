@@ -105,7 +105,7 @@ function PaymentIframe(props) {
       transactionToken,
       loader: false,
       locale:'en_US',
-      successUrl: 'https://paytek-cars.netlify.app/success',
+      successUrl: 'https://paytek-cars.netlify.app/process',
       cancelUrl:'https://paytek-cars.netlify.app/cart'
     });
   }

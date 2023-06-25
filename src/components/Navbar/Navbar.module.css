@@ -24,6 +24,7 @@
 .swiggy_logo>img {
     height: 100%;
     width: 100%;
+    mix-blend-mode: multiply;
 }
 .cart_button {
     cursor: pointer;

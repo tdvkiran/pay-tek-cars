@@ -66,7 +66,9 @@ function Cart(props) {
       setIsOrderPlaced(true);
       setCartItems([]);
       setTotalCartQuantity(0);
-      history.push('/success');
+      setTimeout(() => {
+        history.push('/success');
+      }, 1000);
     }
     if (open === false) {
       setIsSDKLoading(true);

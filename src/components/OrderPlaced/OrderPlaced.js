@@ -3,7 +3,7 @@ import OrderPlacedSuccesfully from '../../assets/OrderPlacedSuccesfully.png';
 import { CartContext } from '../../context/cartContext';
 import styles from './OrderPlaced.module.css';
 function OrderPlaced(props) {
-  const { history } = props;
+  const { history ,textMessage} = props;
 
   const redirectToHomepage = () => {
     history.push('/');
@@ -18,7 +18,7 @@ function OrderPlaced(props) {
       <div className={styles.tickIcon}>
         <img src={OrderPlacedSuccesfully} alt="order-placed-tick" />
       </div>
-      <div className={styles.orderPlacedSuccessfullyText}> Order Placed Successfully !</div>
+      <div className={styles.orderPlacedSuccessfullyText}> {textMessage||'Order Placed Successfully !'}</div>
       <div className={styles.goToHomepage} role="button" tabIndex={0} onClick={redirectToHomepage}>
         Go to Home
       </div>
