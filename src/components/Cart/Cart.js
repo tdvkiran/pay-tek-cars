@@ -51,6 +51,7 @@ function Cart(props) {
     setIsPaymetSuccess(false);
     setIsPaymetFailed(false);
     setIsSDKLoading(true);
+    setTransactionInProgress(false);
   };
 
   const toggleDrawer = (anchor, open) => (event) => {
@@ -66,22 +67,26 @@ function Cart(props) {
       setIsOrderPlaced(true);
       setCartItems([]);
       setTotalCartQuantity(0);
+      setTransactionInProgress(false);
       setTimeout(() => {
         history.push('/success');
       }, 1000);
     }
     if (open === false) {
       setIsSDKLoading(true);
+      setTransactionInProgress(false);
     }
     if (open === false && isPaymentFailed) {
       setIsPaymetSuccess(false);
       setIsPaymetFailed(false);
       setIsSDKLoading(true);
+      setTransactionInProgress(false);
     }
     setDrawerPositio({ ...drawerPosition, [anchor]: open });
   };
   const handleSDKLoad = () => {
     setIsSDKLoading(false);
+    setTransactionInProgress(false);
   };
 
   const handleIFrameReady = () => {};
@@ -89,11 +94,13 @@ function Cart(props) {
   const handleTransactionSuccess = () => {
     setIsPaymetSuccess(true);
     setIsPaymetFailed(false);
+    setTransactionInProgress(false);
   };
 
   const handleFailedTransaction = () => {
     setIsPaymetFailed(true);
     setIsPaymetSuccess(false);
+    setTransactionInProgress(false);
   };
 
   const  handleTransactionInProgress = ()=>{
