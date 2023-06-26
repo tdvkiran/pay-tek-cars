@@ -24,7 +24,7 @@ function OrderPlaced(props) {
       </div>}
       <div className={styles.orderPlacedSuccessfullyText}> {textMessage||'Order Placed Successfully !'}</div>
       <div className={styles.goToHomepage} role="button" tabIndex={0} onClick={redirectToHomepage}>
-        Go to Home
+        Go Home
       </div>
     </div>
   );
