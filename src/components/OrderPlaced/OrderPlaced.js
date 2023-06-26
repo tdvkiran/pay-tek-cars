@@ -1,5 +1,6 @@
 import React ,{useContext,useEffect}from 'react';
 import OrderPlacedSuccesfully from '../../assets/OrderPlacedSuccesfully.png';
+import PaymentInProgress from '../../assets/paymentInProgress.png'
 import { CartContext } from '../../context/cartContext';
 import styles from './OrderPlaced.module.css';
 function OrderPlaced(props) {
@@ -15,9 +16,12 @@ function OrderPlaced(props) {
   },[])
   return (
     <div className={styles.orderPlaced}>
-      <div className={styles.tickIcon}>
+      {!textMessage && <div className={styles.tickIcon}>
         <img src={OrderPlacedSuccesfully} alt="order-placed-tick" />
-      </div>
+      </div>}
+      {textMessage && <div className={styles.paymentInProgress}>
+      <img src={PaymentInProgress} alt="payment-in-progress" />
+      </div>}
       <div className={styles.orderPlacedSuccessfullyText}> {textMessage||'Order Placed Successfully !'}</div>
       <div className={styles.goToHomepage} role="button" tabIndex={0} onClick={redirectToHomepage}>
         Go to Home

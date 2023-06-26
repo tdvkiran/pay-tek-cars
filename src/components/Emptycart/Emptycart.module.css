@@ -20,8 +20,8 @@ flex-direction: column;
 }
 
 .emptyCartImage>img{
-    width: 50%;
-    height: 50%;
+    width: 55%;
+    height: 55%;
 }
 .goToCarsPage{
     padding: 10px 60px;
@@ -35,7 +35,7 @@ flex-direction: column;
     vertical-align:middle;
 }
 .emptyCartText{
-    font-size: 33px;
+    font-size: 31px;
     color:rgb(47, 36, 172);
     margin-left: 25px;
 }
@@ -52,5 +52,9 @@ flex-direction: column;
     .emptyCartImage{
         width: auto;
         height: auto;
+    }
+    .emptyCartImage>img{
+        width: 45%;
+        height: 45%;
     }
   }

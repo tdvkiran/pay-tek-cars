@@ -1,12 +1,19 @@
-import React ,{useRef,useEffect,useState }from 'react'
-import axios from 'axios';
-import styles from './PaymentIframe.module.css';
-import { v4 as uuidv4 } from 'uuid';
-import _ from 'lodash';
+import React, { useRef, useEffect, useState } from "react";
+import axios from "axios";
+import styles from "./PaymentIframe.module.css";
+import { v4 as uuidv4 } from "uuid";
+import _ from "lodash";
+
 
 function PaymentIframe(props) {
-  const {totalAmount, handleFailedTransaction,handleTransactionSuccess, handleTransactionInProgress,handleSDKLoad}=props;
-  const [transactionToken, setTransactionToken] = useState('');
+  const {
+    totalAmount,
+    handleFailedTransaction,
+    handleTransactionSuccess,
+    handleTransactionInProgress,
+    handleSDKLoad,
+  } = props;
+  const [transactionToken, setTransactionToken] = useState("");
   const iFrameRef = useRef(null);
   const eventType = _.property("data.type");
   const eventValue = _.property("data.value");
@@ -30,7 +37,7 @@ function PaymentIframe(props) {
       .post(
         "https://tst-tpay-sdk.tekion.xyz/api/tpay-sdk-api/p/v1/transactions/initiate",
         {
-          amount: totalAmount*100,
+          amount: totalAmount * 100,
           currency: "USD",
           idempotencyKey: uuidv4(),
           notes: "test-notes",
@@ -55,34 +62,32 @@ function PaymentIframe(props) {
         (response) => {
           const token = _.get(response, "data.data.transactionToken");
           setTransactionToken(token);
-
         },
         (error) => {
           console.log(error);
         }
       );
   };
- 
-  useEffect(()=>{
-    getTransactionToken();
-  },[])
 
+  useEffect(() => {
+    getTransactionToken();
+  }, []);
 
   const windowMessageHandler = (iFrameRef) => (event) => {
     if (_.includes(TEKION_SDK_IFRAME_URL, eventOrigin(event))) {
       switch (eventType(event)) {
         case IFRAME_EVENT_TYPE.SDK_LOADED:
-            handleSDKLoad();
+          handleSDKLoad();
           break;
         case IFRAME_EVENT_TYPE.TRANSACTION_SUCCESSFUL:
-            handleTransactionSuccess();
+          handleTransactionSuccess();
           break;
         case IFRAME_EVENT_TYPE.TRANSACTION_FAILURE:
-            handleFailedTransaction();
-            break;  
+          handleFailedTransaction();
+          break;
         default:
-            handleTransactionInProgress();
-            break;
+          handleTransactionInProgress();
+          break;
       }
     }
   };
@@ -93,32 +98,33 @@ function PaymentIframe(props) {
   };
 
   const postMessageToIframe = (type, iFrameRef, value, data) =>
-  iFrameRef?.current?.contentWindow?.postMessage(
-    { type, value, ...data },
-    ACCEPTED_ORIGINS
-  );
-
-
-  const onLoad = ()=>{
+    iFrameRef?.current?.contentWindow?.postMessage(
+      { type, value, ...data },
+      ACCEPTED_ORIGINS
+    );
+  const onLoad = () => {
     addIframeListener(iFrameRef);
     postMessageToIframe(IFRAME_EVENT_TYPE.IFRAME_PROPS, iFrameRef, {
       transactionToken,
       loader: false,
-      locale:'en_US',
-      successUrl: 'https://paytek-cars.netlify.app/process',
-      cancelUrl:'https://paytek-cars.netlify.app/cart'
-    });
-  }
+      locale: "en_US",
+      successUrl: "https://paytek-cars.netlify.app/process",
+      cancelUrl: "https://paytek-cars.netlify.app/cart",
 
-    return (  
-      transactionToken!=='' && <iframe
+    });
+  };
+
+  return (
+    transactionToken !== "" && (
+      <iframe
         ref={iFrameRef}
         className={styles.iframe}
         src={`${TEKION_SDK_IFRAME_URL}`}
-        title={'Tpay-SDK'}
+        title={"Tpay-SDK"}
         onLoad={onLoad}
       />
-    );
+    )
+  );
 }
 
-export default PaymentIframe
+export default PaymentIframe;

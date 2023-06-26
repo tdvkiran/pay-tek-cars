@@ -17,7 +17,8 @@ import _ from "lodash";
 
 function Cart(props) {
   const { history } = props;
-  const cartItems = JSON.parse(localStorage.getItem('cartItems'));
+  const cartItems = JSON.parse(localStorage.getItem('cartItems'))||[];
+
   const {  setCartItems ,setTotalCartQuantity} = useContext(CartContext);
   const [isPaymetSuccess, setIsPaymetSuccess] = useState(false);
   const [isPaymentFailed, setIsPaymetFailed] = useState(false);

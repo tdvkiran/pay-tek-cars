@@ -5,6 +5,7 @@
     justify-content: center;
     flex-direction: column;
     padding-top: 100px;
+    /* background-color: green; */
 
 }
 .orderPlacedSuccessfullyText{
@@ -12,6 +13,7 @@ font-weight: 500;
 font-size: 25px;
 color: rgb(29, 35, 214);
 margin-top: 50px;
+text-align: center;
 }
 .goToHomepage{
     padding: 10px 50px;
@@ -27,4 +29,15 @@ margin-top: 50px;
     filter: brightness(1.15);
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     cursor: pointer;
+  }
+  .paymentInProgress{
+    /* background-color: red; */
+    display: flex;
+    justify-content: center;
+    
+  }
+  .paymentInProgress>img{
+    width: 70%;
+    height: 70%;
+    mix-blend-mode: multiply;
   }
