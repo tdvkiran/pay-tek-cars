@@ -16,12 +16,12 @@ import PaymentIframe from "../PaymentIframe/PaymentIframe";
 import _ from "lodash";
 
 function Cart(props) {
-  const { history } = props;
+  const { history ,setShowSuccessPage} = props;
   const cartItems = JSON.parse(localStorage.getItem('cartItems'))||[];
 
-  const {  setCartItems ,setTotalCartQuantity} = useContext(CartContext);
-  const [isPaymetSuccess, setIsPaymetSuccess] = useState(false);
-  const [isPaymentFailed, setIsPaymetFailed] = useState(false);
+  const { setCartItems ,setTotalCartQuantity} = useContext(CartContext);
+  const [isPaymentSuccess, setIsPaymentSuccess] = useState(false);
+  const [isPaymentFailed, setIsPaymentFailed] = useState(false);
   const [isSDKLoading, setIsSDKLoading] = useState(true);
   const [isOrderPlaced, setIsOrderPlaced] = useState(false);
   const [isTransactionInProgress , setTransactionInProgress]=useState(false);
@@ -49,8 +49,8 @@ function Cart(props) {
   });
 
   const handleRetryPayment = () => {
-    setIsPaymetSuccess(false);
-    setIsPaymetFailed(false);
+    setIsPaymentSuccess(false);
+    setIsPaymentFailed(false);
     setIsSDKLoading(true);
     setTransactionInProgress(false);
   };
@@ -63,13 +63,14 @@ function Cart(props) {
       return;
     }
    
-    if (open === false && isPaymetSuccess) {
-      setIsPaymetSuccess(false);
+    if (open === false && isPaymentSuccess) {
+      setIsPaymentSuccess(false);
       setIsOrderPlaced(true);
       setCartItems([]);
       setTotalCartQuantity(0);
       setTransactionInProgress(false);
       setTimeout(() => {
+        setShowSuccessPage(true);
         history.push('/success');
       }, 1000);
     }
@@ -78,8 +79,8 @@ function Cart(props) {
       setTransactionInProgress(false);
     }
     if (open === false && isPaymentFailed) {
-      setIsPaymetSuccess(false);
-      setIsPaymetFailed(false);
+      setIsPaymentSuccess(false);
+      setIsPaymentFailed(false);
       setIsSDKLoading(true);
       setTransactionInProgress(false);
     }
@@ -89,19 +90,20 @@ function Cart(props) {
     setIsSDKLoading(false);
     setTransactionInProgress(false);
   };
-
+  //  can be removed
   const handleIFrameReady = () => {};
 
   const handleTransactionSuccess = () => {
-    setIsPaymetSuccess(true);
-    setIsPaymetFailed(false);
+    setIsPaymentSuccess(true);
+    setIsPaymentFailed(false);
     setTransactionInProgress(false);
   };
 
   const handleFailedTransaction = () => {
-    setIsPaymetFailed(true);
-    setIsPaymetSuccess(false);
+    setIsPaymentFailed(true);
+    setIsPaymentSuccess(false);
     setTransactionInProgress(false);
+    
   };
 
   const  handleTransactionInProgress = ()=>{
@@ -166,7 +168,7 @@ function Cart(props) {
         {
           isTransactionInProgress&&<div className={styles.redirecting}>Redirecting....</div>
         }
-        {!isPaymetSuccess && !isPaymentFailed && (
+        {!isPaymentSuccess && !isPaymentFailed && (
           <PaymentIframe
             totalCartPrice={totalCartPrice}
             handleIFrameReady={handleIFrameReady}
@@ -177,7 +179,7 @@ function Cart(props) {
             handleTransactionInProgress={ handleTransactionInProgress}
           />
         )}
-        {isPaymetSuccess && <PaymentSuccess  toggleDrawerHelper={toggleDrawer}/>}
+        {isPaymentSuccess && <PaymentSuccess  toggleDrawerHelper={toggleDrawer}/>}
         {isPaymentFailed && (
           <PaymentFailed handleRetryPayment={handleRetryPayment} />
         )}

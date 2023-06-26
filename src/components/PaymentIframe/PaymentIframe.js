@@ -48,6 +48,10 @@ function PaymentIframe(props) {
           },
           enablePaymentModes: [],
           disablePaymentModes: [],
+          payerDetails: {
+            customerName: "Test Name",
+            customerEmail: "hpandey@tekion.com"
+        }
         },
         {
           headers: {
@@ -108,7 +112,7 @@ function PaymentIframe(props) {
       transactionToken,
       loader: false,
       locale: "en_US",
-      successUrl: "https://paytek-cars.netlify.app/process",
+      successUrl: "http://localhost:3001/process",
       cancelUrl: "https://paytek-cars.netlify.app/cart",
 
     });

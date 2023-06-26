@@ -118,9 +118,9 @@ margin-bottom: 5%;
     .cartCard {
       flex-direction: column;
       gap: 25px;
-      /* min-width: auto; */
       width: auto;
       font-size: 0.8rem;
+      margin: 0 15px;
     }
     
     .carImage {
